@@ -1,0 +1,65 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  date: Date;
+  description?: string;
+  cover?: string;
+  tags?: string[];
+  lang?: 'en' | 'ar';
+}
+
+const { title, date, description, cover, tags, lang = 'en' } = Astro.props;
+
+const formatted = date.toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US', {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+---
+
+<BaseLayout title={title} description={description} ogImage={cover} lang={lang}>
+  <div class="container">
+    <article>
+      <div class="article-header">
+        <a href="/blog" class="back-link">
+          ← All posts
+        </a>
+
+        {cover && (
+          <div class="article-cover">
+            <img src={cover} alt={title} loading="eager" />
+          </div>
+        )}
+
+        <div class="article-meta">
+          <time datetime={date.toISOString()}>{formatted}</time>
+          {tags && tags.length > 0 && (
+            <>
+              <span class="sep">·</span>
+              <div class="tags">
+                {tags.map(t => <span class="tag">{t}</span>)}
+              </div>
+            </>
+          )}
+        </div>
+
+        <h1 class="article-title">{title}</h1>
+        {description && <p class="article-desc">{description}</p>}
+      </div>
+
+      <div class="article-body" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+        <slot />
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .article-desc {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-top: .5rem;
+    line-height: 1.6;
+  }
+  .container { padding-bottom: 4rem; }
+</style>

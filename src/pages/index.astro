@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 6);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+const topicEmojis: Record<string, string> = {
+  default: '📝',
+};
+---
+
+<BaseLayout
+  title="Mohammed Sweelam"
+  description="Software engineer writing about distributed systems, architecture, Java, Go, and the human side of engineering."
+>
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">
+        Hi, I'm <span>Mohammed Sweelam</span>
+      </h1>
+      <p class="hero-tagline">
+        Software engineer writing about distributed systems, architecture, Java, Go,
+        and the human side of engineering.
+      </p>
+      <a href="/blog" class="hero-cta">Read all posts →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Recent Posts</h2>
+      <div class="posts-grid">
+        {posts.map(post => (
+          <article class="post-card">
+            {post.data.cover ? (
+              <div class="post-card-cover">
+                <img src={post.data.cover} alt={post.data.title} loading="lazy" />
+              </div>
+            ) : (
+              <div class="post-card-cover-placeholder">📝</div>
+            )}
+            <div class="post-card-body">
+              <div class="post-meta">
+                <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+              </div>
+              <h3 class="post-card-title">
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h3>
+              {post.data.description && (
+                <p class="post-card-desc">{post.data.description}</p>
+              )}
+              {post.data.tags && post.data.tags.length > 0 && (
+                <div class="tags">
+                  {post.data.tags.map(t => <span class="tag">{t}</span>)}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

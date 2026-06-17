@@ -1,0 +1,57 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  lang?: 'en' | 'ar';
+}
+
+const { title, description, ogImage, lang = 'en' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteTitle = 'Mohammed Sweelam';
+---
+
+<!doctype html>
+<html lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonicalURL} />
+    <title>{title === siteTitle ? title : `${title} — ${siteTitle}`}</title>
+    {description && <meta name="description" content={description} />}
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a href="/" class="site-logo">
+          MS<span class="logo-dot">.</span>
+        </a>
+        <nav class="site-nav">
+          <a href="/" class={Astro.url.pathname === '/' ? 'active' : ''}>Home</a>
+          <a href="/blog" class={Astro.url.pathname.startsWith('/blog') ? 'active' : ''}>Blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} Mohammed Sweelam · Built with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> · Hosted on <a href="https://pages.cloudflare.com" target="_blank" rel="noopener">Cloudflare Pages</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
