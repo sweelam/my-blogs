@@ -2,7 +2,7 @@
 title: "The Promotion Trap"
 date: 2026-04-17
 description: "Ahmed is a skilled senior employee who consistently solves business problems in a notable way. His manager trusts that, no matter the problem, Ahmed will find..."
-cover: "/images/blog/9e785999-9448-4d4a-b8c4-4201244019a5.png"
+cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/9e785999-9448-4d4a-b8c4-4201244019a5.png"
 ---
 
 Ahmed is a skilled senior employee who consistently solves business problems in a notable way. His manager trusts that, no matter the problem, Ahmed will find an effective approach to tackling it. Ahmed has been working as a senior employee for a couple of years now, and during that time he has built a great skill set. He has faced many known and unknown issues, all of which he was able to solve. His team trusts him and is confident that as long as Ahmed is part of the discussion, they are in good hands.
@@ -15,7 +15,7 @@ After a couple of months, the manager came to Ahmed and told him that he had fai
 
 This quick story is a common problem that lots of employees experience today. Companies that don't help employees move the right place always lose a skilled employee. In fact, losing someone like Ahmed may be compensated with 3 or 4 employees, and they may not provide what Ahmed was providing!
 
-![](/images/blog/29669252-0906-425f-abc2-ef6596c1db72.png)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/29669252-0906-425f-abc2-ef6596c1db72.png)
 
 ### **Three Types of Employees (All Seek Promotions)**
 
@@ -62,7 +62,7 @@ At some point, the manager will need to propose the case for promotion, and the 
 
 Companies should also be mindful of promotion offer rejection. If an employee doesn’t see themselves as fit for a specific role, they should have the freedom to decline it with reasonable justification. The organization should remain open to this situation and, nevertheless, recognize the employee through other means—such as a salary increase or something similar. At the same time, it should try to understand the employee’s interests and career vision.
 
-![](/images/blog/6fc5ad90-782b-4ced-a03c-52c5c9704cc5.png)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/6fc5ad90-782b-4ced-a03c-52c5c9704cc5.png)
 
 ### **Conclusion**
 

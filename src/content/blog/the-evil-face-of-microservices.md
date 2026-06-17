@@ -2,7 +2,7 @@
 title: "The Evil Face of Microservices"
 date: 2026-04-17
 description: "It is almost 12 years since the word “Microservices” reached the earth, an architecture that everyone loves, and decided to build it claiming it is the..."
-cover: "/images/blog/ffc36bb6-9b1e-4754-b23e-f88867cf3270.png"
+cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/ffc36bb6-9b1e-4754-b23e-f88867cf3270.png"
 ---
 
 It is almost 12 years since the word “[Microservices](https://en.wikipedia.org/wiki/Microservices)” reached the earth, an architecture that everyone loves, and decided to build it claiming it is the magician that will solve all the issues.
@@ -22,7 +22,7 @@ Back to system design-101 class, you remind yourself to start with High-Level De
 *   Databases that can support your traffic.
     
 
-![](/images/blog/3560c651-4b10-4d06-b8cb-d51d91928c93.png)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/3560c651-4b10-4d06-b8cb-d51d91928c93.png)
 
 Very easy, right? not that much, you have to follow the recommended pattern “Every microservice has its own DB”, but, let's deploy to production and see! a few months later you started to notice something, we don’t have a good mechanism that allows us to communicate with our customers and provide them with an accurate report if needed “Reporting”
 
@@ -32,7 +32,7 @@ A few months later, traffic increased and you found your database layer become a
 
 ## **Introducing Caching**
 
-![](/images/blog/3d632deb-924d-49a5-9e51-9804129a77c5.png)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/3d632deb-924d-49a5-9e51-9804129a77c5.png)
 
 *Although you introduced a new component “Redis Cache” that added operation load to manage*, The system becomes much better and can survive for some time, as usual, happy life will not last, you noticed your system still facing performance issues, spent some days troubleshooting and discovered the issue is the API request received, processed, and the response sent back in a **blocking fashion**.
 
@@ -40,7 +40,7 @@ A few months later, traffic increased and you found your database layer become a
 
 You decided to enhance the flow by making part of it be processed asynchronously, that way system doesn’t need to wait until the whole process is complete in a blocking fashion.
 
-![](/images/blog/a43d83cb-c18d-4759-89bf-872da85cc79d.png)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/a43d83cb-c18d-4759-89bf-872da85cc79d.png)
 
 *Again, Although you introduced a new component “RabbitMQ or Kafka” that added operation load to manage,* the system becomes faster and more scalable, new desired advantages, right? but with a cost!
 
@@ -58,7 +58,7 @@ Microservices represent distributed systems, so you will need to build a “[**D
 
 Is it the only thing you need to have to answer? No, maybe the failure was from an Infra component, maybe your system Memory size limit was reached, maybe CPUs issue, maybe others, so you did your search and found that you also need two other components that can track, and allow you to troubleshoot the system; [Grafana](https://grafana.com/) and [Prometheus](https://prometheus.io/), or **Observability**.
 
-![](/images/blog/64405139-11f3-4c10-b0b5-e60d24065969.png)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/64405139-11f3-4c10-b0b5-e60d24065969.png)
 
 Your system is much more robust now, you become happy, but with a cost, right? this is a quick snapshot of microservices and what you really need to know before going with this architecture.
 

@@ -2,7 +2,7 @@
 title: "Managing What You Can't Control"
 date: 2026-04-18
 description: "In this blog, I'm assuming you have foundational knowledge about AI and"
-cover: "/images/blog/dc0f13b5-041d-47a6-9e50-6db91c6a7c53.png"
+cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/dc0f13b5-041d-47a6-9e50-6db91c6a7c53.png"
 ---
 
 *In this blog, I'm assuming you have foundational knowledge about AI and LLM*
@@ -11,7 +11,7 @@ Many business domains depend on external providers in their workflows — mainly
 
 Data control usually means control over data structure and formatting. Imagine you want to integrate via API a complementary information but can't find a single trusted source, so you decide to use multiple providers and consolidate their data internally — something like the following:
 
-![](/images/blog/0540af2e-0ed0-4280-a359-fae2524176c7.png)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/0540af2e-0ed0-4280-a359-fae2524176c7.png)
 
 Because providers are external entities you don't control, their responses—often in JSON—will likely have different structures, it becomes like a free-text input, and suffers from:
 
@@ -24,7 +24,7 @@ Because providers are external entities you don't control, their responses—oft
 
 This is a common problem; Eric Evans describes a solution for it in Domain-Driven Design (DDD): the Anti-Corruption Layer, which refines the data model exposed by any source into the model your system expects.
 
-![](/images/blog/8ec792ae-4203-4a86-892f-d0c5b8178e96.png)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/8ec792ae-4203-4a86-892f-d0c5b8178e96.png)
 
 This approach is common and works well, but it has one drawback: increased complexity—especially when implementing the architecture shown in the previous diagram. Whatever design you choose for the anti-corruption layer—whether a dedicated module or a similar component—you'll likely end up with code containing many if‑else statements or design patterns that replicate the same behavior. Over time, such a module becomes a blurry area that few people understand.
 
@@ -36,7 +36,7 @@ AI "LLM Model" can be an excellent fit for this use case because of its pattern�
 
 One approach is to consult an AI model via API—treating the model as a separate service and invoking it as a step in your core business workflow. This can work well, but it has a significant drawback: it can make the system noticeably slower, since AI calls often take several seconds before returning a response.
 
-![](/images/blog/e65c9fec-64e1-4a1f-a181-ab38fab57d50.png)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/e65c9fec-64e1-4a1f-a181-ab38fab57d50.png)
 
 Another approach is delayed invocation, where you perform the core logic without data unification and set up a periodic background job to fetch data from the master DB, unify it, and write it back. This reduces user wait time by moving work to a background step, but it has a common drawback: updates will be delayed and may become stale over time.
 
@@ -44,7 +44,7 @@ Another approach is delayed invocation, where you perform the core logic without
 
 The third approach is event-based solution, where the process is conducted at real-time using event-driven data flow. Data flows and gets unified in real time, as events are processed the moment they arrive.This approach is better than the previous in term of data flow, Yet, adding some complexities like coding design and operational maintenance.
 
-![](/images/blog/35dfa2b0-029f-4590-928a-dfedabf872cc.png)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/35dfa2b0-029f-4590-928a-dfedabf872cc.png)
 
 > You should evaluate every approach, check pros and cons, and decide which one is the best fit for your environment case.
 
