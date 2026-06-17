@@ -2,7 +2,7 @@
 title: "The Million-Dollar AI Mistake"
 date: 2026-04-25
 description: "While designing a complex installment module with multiple variables, an engineer had a 'bright' idea: 'Instead of building this ourselves, let's just use AI...."
-cover: "https://cdn.hashnode.com/uploads/covers/69e12ea8ffbb787634ea29f2/ce285527-3313-47ac-b6e6-e58ada16a125.png"
+cover: "/images/blog/ce285527-3313-47ac-b6e6-e58ada16a125.png"
 ---
 
 While designing a complex installment module with multiple variables, an engineer had a "bright" idea: "Instead of building this ourselves, let's just use AI. It can adjust the results on the fly." It was a million-dollar mistake.
@@ -32,9 +32,9 @@ LLMs excel at understanding and generating text, but they are not engineered for
 
 For example, in the ChatGPT screenshot below you can see an unexpected result that probably wasn’t anticipated. But, if I executed the same logic with a Python interpreter, the answer would be 100% correct within a fraction of a second.
 
-![](https://cdn.hashnode.com/uploads/covers/69e12ea8ffbb787634ea29f2/3bfa3e75-af59-4216-8497-1a3de933027e.png align="center")
+![](/images/blog/3bfa3e75-af59-4216-8497-1a3de933027e.png)
 
-![](https://cdn.hashnode.com/uploads/covers/69e12ea8ffbb787634ea29f2/d078c276-d3d3-404b-bf14-06636a51ee63.png align="center")
+![](/images/blog/d078c276-d3d3-404b-bf14-06636a51ee63.png)
 
 > *Imagine your AI assistant tells a customer your loan instalment is* ***X***\*, but the real number is\* ***Y***\*.\* You need to understand this very well before you decide to deploy a LLM-based solution.
 

@@ -2,7 +2,7 @@
 title: "Where Do You Stand in the AI Era?"
 date: 2026-04-17
 description: "AI User, AI Enabler, or AI Native — Which Engineer Are You?"
-cover: "https://cdn.hashnode.com/uploads/covers/69e12ea8ffbb787634ea29f2/a2d7b3e6-b06e-4fb9-a8c8-083e624b4078.png"
+cover: "/images/blog/a2d7b3e6-b06e-4fb9-a8c8-083e624b4078.png"
 ---
 
 Who in the world doesn't know that AI is today's trend—the new era and a tool that's come to dominate many areas? You've definitely heard this on social media or from friends.

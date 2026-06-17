@@ -2,7 +2,7 @@
 title: "Architect and Teams"
 date: 2026-04-17
 description: "Communication creates clarity across different perspectives — and for engineers, that means learning to talk non-tech. Anyone building a system to deliver..."
-cover: "https://cdn.hashnode.com/uploads/covers/69e12ea8ffbb787634ea29f2/a1cc22f5-907e-48f0-9007-7f8117569d22.jpg"
+cover: "/images/blog/a1cc22f5-907e-48f0-9007-7f8117569d22.jpg"
 ---
 
 Communication creates clarity across different perspectives — and for engineers, that means learning to talk non-tech. Anyone building a system to deliver business value must master this. Consider the difference: "We need to build a scalable system using X architecture style" versus "We need a system that can serve a lot of users." Same intent, completely different audiences. The architect's job is to move fluently between both.
@@ -17,7 +17,7 @@ The architect and engineering team should crunch the business domain to understa
 
 It is worth mentioning that the same Ubiquitous Language terms can have different meaning in different contexts "Context Boundary" within the same organization. For example, the term "Order" can have different meaning in different contexts, such as "Order" in the sales context and "Order" in the inventory context.
 
-![DDD Ubiquitous Language](https://cdn.hashnode.com/uploads/covers/69e12ea8ffbb787634ea29f2/5976d671-609b-4059-bf2f-2412eb25288b.png align="center")
+![DDD Ubiquitous Language](/images/blog/5976d671-609b-4059-bf2f-2412eb25288b.png)
 
 The architect's role extends beyond system design—it includes facilitating understanding between technical and non-technical stakeholders. Mastering Ubiquitous Language is not optional; it's essential for preventing miscommunication and building software that truly solves business problems.
 

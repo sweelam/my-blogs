@@ -10,9 +10,6 @@ function formatDate(date: Date) {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
-const topicEmojis: Record<string, string> = {
-  default: '📝',
-};
 ---
 
 <BaseLayout
@@ -25,7 +22,7 @@ const topicEmojis: Record<string, string> = {
         Hi, I'm <span>Mohammed Sweelam</span>
       </h1>
       <p class="hero-tagline">
-        Software engineer writing about distributed systems, architecture, Java, Go,
+        Software engineer writing about distributed systems, architecture, Programming Languages,
         and the human side of engineering.
       </p>
       <a href="/blog" class="hero-cta">Read all posts →</a>
