@@ -111,6 +111,22 @@ img { max-width: 100%; height: auto; display: block; }
 [data-theme="dark"] .icon-sun  { display: none; }
 [data-theme="dark"] .icon-moon { display: block; }
 
+/* ── Social links (header) ──────────────────────────────────────────────────── */
+.social-links { display: flex; align-items: center; gap: .25rem; }
+.social-link {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  color: var(--header-nav);
+  border: 1px solid transparent;
+  transition: color .15s, background .15s, border-color .15s;
+}
+.social-link:hover {
+  color: var(--header-nav-hover);
+  background: rgba(0,0,0,.06);
+  border-color: var(--header-border);
+}
+[data-theme="dark"] .social-link:hover { background: rgba(255,255,255,.06); }
+
 /* ── Footer ─────────────────────────────────────────────────────────────────── */
 .site-footer {
   margin-top: auto;
@@ -122,7 +138,18 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: .85rem;
   transition: background .2s;
 }
-.site-footer a { color: var(--accent); }
+.footer-social {
+  display: flex; align-items: center; justify-content: center; gap: .75rem;
+  margin-bottom: .6rem; flex-wrap: wrap;
+}
+.footer-social a {
+  display: inline-flex; align-items: center; gap: .35rem;
+  color: var(--text-muted); font-size: .82rem;
+  transition: color .15s;
+}
+.footer-social a:hover { color: var(--accent); }
+.footer-sep { color: var(--border); user-select: none; }
+.footer-copy { color: var(--text-muted); }
 
 /* ── Hero ────────────────────────────────────────────────────────────────────── */
 .hero {
@@ -142,6 +169,17 @@ img { max-width: 100%; height: auto; display: block; }
   transition: background .15s, transform .15s;
 }
 .hero-cta:hover { background: #4338ca; color: white; transform: translateY(-1px); }
+
+.hero-social {
+  display: flex; align-items: center; justify-content: center; gap: 1.25rem;
+  margin-top: 1.5rem; flex-wrap: wrap;
+}
+.hero-social a {
+  display: inline-flex; align-items: center; gap: .4rem;
+  color: rgba(255,255,255,.5); font-size: .85rem;
+  transition: color .15s;
+}
+.hero-social a:hover { color: rgba(255,255,255,.9); }
 
 /* ── Section ────────────────────────────────────────────────────────────────── */
 .section { padding: 3.5rem 0; }
