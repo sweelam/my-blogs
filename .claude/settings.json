@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /Users/msweelam/Work/hashnode-content -type f | head -40 && echo \"---\" && ls /Users/msweelam/Work/hashnode-content)",
+      "Read(//Users/msweelam/Work/hashnode-content/**)",
+      "Bash(python3)",
+      "Bash(npm install *)",
+      "Bash(npx astro *)",
+      "Bash(make check *)",
+      "Bash(make test *)",
+      "Bash(python3 -c ' *)",
+      "Bash(make build *)",
+      "Bash(git -C /Users/msweelam/Work/my-blogs remote -v)",
+      "Bash(git -C /Users/msweelam/Work/my-blogs status)",
+      "Bash(git -C /Users/msweelam/Work/my-blogs log --oneline -5)",
+      "Bash(git -C /Users/msweelam/Work/my-blogs add images/ src/content/blog/)",
+      "Bash(git -C /Users/msweelam/Work/my-blogs rm --cached public/images/blog/*.png public/images/blog/*.jpg)",
+      "Bash(git -C /Users/msweelam/Work/my-blogs add -u public/images/blog/)",
+      "Bash(git -C /Users/msweelam/Work/my-blogs commit -m ' *)",
+      "Bash(git -C /Users/msweelam/Work/my-blogs push origin main)",
+      "Bash(npm run *)"
+    ]
+  }
+}

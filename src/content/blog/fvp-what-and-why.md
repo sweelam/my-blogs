@@ -19,7 +19,7 @@ Teams decided to rely on local machine tools as much as possible. IDEs like VSCo
 - Updates are not always backward compatible — an update can break the plugin, and this becomes a bottleneck.
 - Context switching across many scattered tools reduces focus on business needs.
 
-I started to feel the need for a toolkit that solves these issues. I wanted to have that in one place, and I wanted to keep my team's productivity steady — or even increasing — while staying focused and maintaining security and data safety, and while following the regulations. That was the main reason I decided to build FVP (Format Viewer & Parser). In the next sections, I would like to share with you what I focused on while building this tool.
+I started to feel the need for a toolkit that solves these issues. I wanted to have that in one place, and I wanted to keep my team's productivity steady — or even increasing — while staying focused and maintaining security and data safety, and while following the regulations. That's the problem FVP set out to solve. Here's what it actually does. 
 
 ## What is FVP?
 
@@ -37,25 +37,46 @@ I started to feel the need for a toolkit that solves these issues. I wanted to h
 - **All-in-one workflow** - formatting, comparison, conversion, visualization, and export in a single tool.
 - **Offline reliability** - dependable `file://` operation for air-gapped, restricted, and travel scenarios.
 
-## Why FVP?
-
-### 🔒 **Security First**
-All processing happens locally in your browser. Your sensitive data never leaves your machine. No servers, no uploads, no risk.
-
-### 🌐 **Truly Offline**
-Works completely offline via `file://` protocol. Download once, use forever. Perfect for air-gapped environments, secure networks, or when traveling.
-
-### ⚡ **Handles Large Files**
-Process files up to **1GB** without crashing. Smart three-tier system automatically optimizes for file size with progress tracking and virtual rendering.
-
-### 🎯 **Enterprise Ready**
-Built for developers, data engineers, and security-conscious professionals who handle sensitive company data, API responses, configuration files, and more.
-
-
 ## Understanding by Visualizing 
-I used to simplify my work with diagrams, and charts, I believe that one picture can be better than 100 words, In FVP, I wanted to deliver the same concept in many places, starting from structured data, and even with infra-as-code. The objective is simplicity, how quickly can understand big file? Definitely with visuals. 
+I've always relied on diagrams and charts to simplify my work — a picture can say more than a thousand words. With FVP, I wanted to bring that same idea everywhere: starting from structured data, and even infrastructure-as-code. The goal is simplicity — how quickly can you understand a large file? Definitely faster with visuals.
 
 ![Docker Compose File Visualization](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/infra-as-code.png)
+
+## PII & Secrets — In Plain Terms
+
+### Catch sensitive data before it leaves your machine
+
+The PII & Secrets tab is your private safety check for logs, configs, exports, JSON, and any other text. Paste or upload a file — FVP scans it on your device and flags anything that looks like personal information or leaked credentials.
+
+![PII and Secrets Detection](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/pii-secrets.png)
+
+### What It Finds
+
+**Instant pattern scan (Layer 1)** — results as you type:
+- Emails, phone numbers, credit cards, SSN-style IDs
+- API keys, JWTs, AWS/GitHub/Stripe-style secrets, private keys
+- Arabic national/mobile ID patterns (including Arabic-Indic digits)
+
+**Smart detection (Layer 2, optional)** — a local ML pass for messier text: names, IDs, and mixed Arabic/English content that regex alone might miss. Still runs entirely on your machine — no cloud, no uploads.
+
+### How You Work With It
+
+- Filter by PII vs. secret, severity, or detection layer
+- Jump to the source line — click a finding to highlight it in context
+- Inspect JSON lines without leaving the tab
+- Export a privacy-safe report — counts, types, and line numbers only, never the actual sensitive values
+
+### Why Teams Use It
+
+| Benefit | What It Means for You |
+|---|---|
+| **Privacy-first** | Your data never leaves your computer |
+| **Fast feedback** | Pattern matches appear immediately; deeper scans run in the background |
+| **Shareable audits** | Export stats-only reports your team can review safely |
+| **Works offline** | No account, no API, no internet required for core scanning |
+
+**Bottom line:** Before you commit, share, or ship a file — run it through PII & Secrets and know what's hiding in the text, without sending that text anywhere.
+
 
 ## What Makes FVP Different?
 
@@ -64,12 +85,20 @@ I used to simplify my work with diagrams, and charts, I believe that one picture
 | **Works Offline** | ✅ Fully | ❌ No | ⚠️ Sometimes |
 | **No Data Upload** | ✅ Never | ❌ Always | ✅ Never |
 | **Large Files (1GB)** | ✅ Yes | ❌ Limited | ❌ Rare |
-| **Multiple Formats** | ✅ 10 Formats | ⚠️ Usually 1-2 | ⚠️ Usually 1 |
+| **Multiple Formats** | ✅ > 12 Formats | ⚠️ Usually 1-2 | ⚠️ Usually 1 |
 | **Diagram Viewer** | ✅ Mermaid (10 types) | ⚠️ Separate tools | ❌ Rare |
 | **Interactive Zoom/Pan** | ✅ Yes | ❌ No | ❌ No |
 | **Session Persistence** | ✅ Auto-save | ❌ Manual only | ❌ None |
 | **Resizable Workspace** | ✅ Draggable divider | ❌ Fixed layout | ❌ Fixed layout |
 | **Setup Required** | ✅ None | ✅ None | ❌ Installation |
-| **Open Source** | ❌ Proprietary | ❌ Rarely | ✅ Sometimes |
 | **Privacy Guarantee** | ✅ 100% | ❌ Trust required | ✅ Yes |
 | **Enterprise Support** | ✅ Available | ⚠️ Paid only | ⚠️ Varies |
+
+
+## Try It Yourself
+
+FVP is live and ready to use — no installation, no signup, no data leaving your browser.
+
+👉 **[Try FVP now](https://fvp-web.msweelam.dev/)**
+
+Drop in a JSON, YAML, XML, or Docker Compose file and see it parsed, validated, and visualized in seconds — or run it through PII & Secrets first to see exactly what's hiding in the text, without sending that text anywhere. If it saves you time or you hit something worth fixing, I'd love to hear about it.
