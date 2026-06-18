@@ -19,10 +19,10 @@ function formatDate(date: Date) {
 
     <div class="posts-grid">
       {posts.map(post => (
-        <article class="post-card">
+        <a href={`/blog/${post.slug}`} class="post-card">
           {post.data.cover ? (
             <div class="post-card-cover">
-              <img src={post.data.cover} alt={post.data.title} loading="lazy" />
+              <img src={post.data.cover} alt="" loading="lazy" />
             </div>
           ) : (
             <div class="post-card-cover-placeholder">📝</div>
@@ -31,9 +31,7 @@ function formatDate(date: Date) {
             <div class="post-meta">
               <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
             </div>
-            <h2 class="post-card-title">
-              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-            </h2>
+            <h2 class="post-card-title">{post.data.title}</h2>
             {post.data.description && (
               <p class="post-card-desc">{post.data.description}</p>
             )}
@@ -43,7 +41,7 @@ function formatDate(date: Date) {
               </div>
             )}
           </div>
-        </article>
+        </a>
       ))}
     </div>
   </div>

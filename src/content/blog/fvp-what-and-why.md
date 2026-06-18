@@ -15,14 +15,11 @@ Over time, data regulations and compliance started evolving. Restrictive rules w
 Teams decided to rely on local machine tools as much as possible. IDEs like VSCode and Cursor support a couple of plugins that teams can use to understand structured data like JSON, XML, or YAML. This solved the issue but not entirely. There were a couple of problems with that approach:
 
 - The search space is big — an engineer needs to find the proper plugin that provides what they are looking for: a plugin for XML, a plugin for JSON, etc.
-
 - Trust is an issue with those plugins — you don't know the author of the plugin or what they are doing in the background with the data; the IDE may still be connected to the internet in the background.
-
 - Updates are not always backward compatible — an update can break the plugin, and this becomes a bottleneck.
-
 - Context switching across many scattered tools reduces focus on business needs.
 
-I started to feel the need for a toolkit that solves these issues, and that was the main reason I decided to build FVP (Format Viewer & Parser).
+I started to feel the need for a toolkit that solves these issues. I wanted to have that in one place, and I wanted to keep my team's productivity steady — or even increasing — while staying focused and maintaining security and data safety, and while following the regulations. That was the main reason I decided to build FVP (Format Viewer & Parser). In the next sections, I would like to share with you what I focused on while building this tool.
 
 ## What is FVP?
 
@@ -53,3 +50,26 @@ Process files up to **1GB** without crashing. Smart three-tier system automatica
 
 ### 🎯 **Enterprise Ready**
 Built for developers, data engineers, and security-conscious professionals who handle sensitive company data, API responses, configuration files, and more.
+
+
+## Understanding by Visualizing 
+I used to simplify my work with diagrams, and charts, I believe that one picture can be better than 100 words, In FVP, I wanted to deliver the same concept in many places, starting from structured data, and even with infra-as-code. The objective is simplicity, how quickly can understand big file? Definitely with visuals. 
+
+![Docker Compose File Visualization](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/infra-as-code.png)
+
+## What Makes FVP Different?
+
+| Feature | FVP | Online Tools | Other Offline Tools |
+|---------|-----|--------------|---------------------|
+| **Works Offline** | ✅ Fully | ❌ No | ⚠️ Sometimes |
+| **No Data Upload** | ✅ Never | ❌ Always | ✅ Never |
+| **Large Files (1GB)** | ✅ Yes | ❌ Limited | ❌ Rare |
+| **Multiple Formats** | ✅ 10 Formats | ⚠️ Usually 1-2 | ⚠️ Usually 1 |
+| **Diagram Viewer** | ✅ Mermaid (10 types) | ⚠️ Separate tools | ❌ Rare |
+| **Interactive Zoom/Pan** | ✅ Yes | ❌ No | ❌ No |
+| **Session Persistence** | ✅ Auto-save | ❌ Manual only | ❌ None |
+| **Resizable Workspace** | ✅ Draggable divider | ❌ Fixed layout | ❌ Fixed layout |
+| **Setup Required** | ✅ None | ✅ None | ❌ Installation |
+| **Open Source** | ❌ Proprietary | ❌ Rarely | ✅ Sometimes |
+| **Privacy Guarantee** | ✅ 100% | ❌ Trust required | ✅ Yes |
+| **Enterprise Support** | ✅ Available | ⚠️ Paid only | ⚠️ Varies |
