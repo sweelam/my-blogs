@@ -1,7 +1,7 @@
 ---
-title: "Offline-First Systems, Privacy Matters"
+title: "FVP: Offline-First. Parse Data, Not Privacy"
 date: 2026-06-18
-description: "FVP - Format Viewer and Parser, All-in-One toolkit that makes messy data readable"
+description: "Why I Built an Offline Tool to Stop Leaking Customer Data?"
 cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/fvp-cover.png"
 ---
 

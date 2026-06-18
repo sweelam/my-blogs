@@ -52,6 +52,14 @@ const formatted = date.toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US', {
       </div>
     </article>
   </div>
+
+  <dialog class="image-lightbox" id="image-lightbox" aria-label="Image preview">
+    <button type="button" class="image-lightbox-close" aria-label="Close preview">×</button>
+    <figure class="image-lightbox-content">
+      <img class="image-lightbox-img" alt="" />
+      <figcaption class="image-lightbox-caption"></figcaption>
+    </figure>
+  </dialog>
 </BaseLayout>
 
 <style>
@@ -63,3 +71,39 @@ const formatted = date.toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US', {
   }
   .container { padding-bottom: 4rem; }
 </style>
+
+<script>
+  const lightbox = document.getElementById('image-lightbox') as HTMLDialogElement;
+  const lightboxImg = lightbox.querySelector('.image-lightbox-img') as HTMLImageElement;
+  const caption = lightbox.querySelector('.image-lightbox-caption') as HTMLElement;
+  const closeBtn = lightbox.querySelector('.image-lightbox-close') as HTMLButtonElement;
+
+  function openLightbox(img: HTMLImageElement) {
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.alt = img.alt;
+    caption.textContent = img.alt;
+    caption.hidden = !img.alt;
+    lightbox.showModal();
+  }
+
+  document.querySelectorAll('.article-body img, .article-cover img').forEach((el) => {
+    const img = el as HTMLImageElement;
+    img.classList.add('article-image-zoomable');
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', img.alt ? `View larger: ${img.alt}` : 'View larger image');
+
+    img.addEventListener('click', () => openLightbox(img));
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(img);
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', () => lightbox.close());
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.close();
+  });
+</script>
