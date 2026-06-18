@@ -7,7 +7,7 @@ cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/a1cc
 
 Communication creates clarity across different perspectives — and for engineers, that means learning to talk non-tech. Anyone building a system to deliver business value must master this. Consider the difference: "We need to build a scalable system using X architecture style" versus "We need a system that can serve a lot of users." Same intent, completely different audiences. The architect's job is to move fluently between both.
 
-As an architect, you will never work in isolation where you dont communicate with different midsets. The world is not only about 0s and 1s; it is about the real world. You will work with different people from different backgrounds. Some have technical backgrounds; some don't care about the technical world and tech terms. Speaking only in technical terms is like talking in another language that those business people don't understand.
+As an architect, you will never work in isolation where you don't communicate with different mindsets. The world is not only about 0s and 1s; it is about the real world. You will work with different people from different backgrounds. Some have technical backgrounds; some don't care about the technical world and tech terms. Speaking only in technical terms is like talking in another language that those business people don't understand.
 
 What is the common language to use? Eric Evans, the author of Domain-Driven Design "DDD", defined a core strategic language that engineers should use to communicate with business people—**Ubiquitous Language**. It is the language that engineers define by understanding the business domain from the domain expert—the most knowledgeable person about the business and business terms.
 
