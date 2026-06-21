@@ -64,8 +64,9 @@ They decided to research best practices and the idiomatic way to handle this in 
 ```
 
 ## Conclusion 
-What started as "AI-Assisted Development" quietly flips into something else once you look closely at how teams actually ship code with AI agents: Assisted-Human Development. The AI writes the code, but it's still leaning on something human-authored to know what "good" looks like—a rule, a skill, an architectural boundary someone had to define first. Wessam's team didn't get faster Go code because the AI got smarter overnight; they got it because a human noticed the failure, understood why it happened, and translated that understanding into a constraint the AI could follow going forward. The AI executed. The human supplied the judgment.
 
-This is the part of the workflow that's easy to skip and expensive to skip. Pair review and code review catch problems after the fact, and they scale with team culture more than with rigor. Rules and skills catch them before the fact, but only if someone took the time to write them—and rewrite them, every time the AI gets something subtly wrong for a reason worth remembering.
+"AI-Assisted Development" quietly flips into **Assisted-Human Development** once you look at how teams actually ship code with AI agents. The AI writes the code, but it still leans on something human-authored to know what "good" looks like—a rule, a skill, a boundary someone had to define first. Wessam's team didn't get faster Go code because the AI got smarter; they got it because a human understood *why* it failed and turned that into a constraint the AI could follow. The AI executed. The human supplied the judgment.
 
-So the honest framing isn't that AI is doing the development and humans are reviewing it. It's closer to the reverse: humans are doing the development—deciding what correct looks like, what idiomatic means in this language, where the boundaries are—and the AI is assisting by writing it down at a speed no team could match alone. Get that balance backwards, and you end up with fast code that nobody, including the AI, actually understands the constraints of.
+Pair review and code review catch problems after the fact. Rules and skills catch them before the fact—but only if someone takes the time to write them.
+
+So the honest framing isn't that AI develops and humans review. It's the reverse: humans decide what correct looks like, and AI assists by writing it down at a speed no team could match alone. Get that backwards, and you ship fast code nobody—including the AI—understands the constraints of.
