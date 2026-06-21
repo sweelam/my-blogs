@@ -2,7 +2,7 @@
 title: "Lightweight Evaluation for New Solutions (LENS)"
 date: 2026-04-23
 description: "The history of scalable systems architecture mirrors the evolution of the digital era itself, a continuous pursuit of efficiency, resilience, and adaptability...."
-cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/ece61bc5-9a5c-443e-b72e-aed1e9ba3da7.png"
+cover: "/images/blog/ece61bc5-9a5c-443e-b72e-aed1e9ba3da7.png"
 ---
 
 ### Navigating Complexity: The Rise of Architectural Frameworks

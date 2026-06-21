@@ -2,7 +2,7 @@
 title: "The Evil Face of Microservices"
 date: 2026-04-17
 description: "It is almost 12 years since the word “Microservices” reached the earth, an architecture that everyone loves, and decided to build it claiming it is the..."
-cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/ffc36bb6-9b1e-4754-b23e-f88867cf3270.png"
+cover: "/images/blog/ffc36bb6-9b1e-4754-b23e-f88867cf3270.png"
 ---
 
 It is almost 12 years since the word “[Microservices](https://en.wikipedia.org/wiki/Microservices)” reached the earth, an architecture that everyone loves, and decided to build it claiming it is the magician that will solve all the issues.

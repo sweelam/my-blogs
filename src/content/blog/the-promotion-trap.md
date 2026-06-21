@@ -2,7 +2,7 @@
 title: "The Promotion Trap"
 date: 2026-04-17
 description: "Ahmed is a skilled senior employee who consistently solves business problems in a notable way. His manager trusts that, no matter the problem, Ahmed will find..."
-cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/9e785999-9448-4d4a-b8c4-4201244019a5.png"
+cover: "/images/blog/9e785999-9448-4d4a-b8c4-4201244019a5.png"
 ---
 
 Ahmed is a skilled senior employee who consistently solves business problems in a notable way. His manager trusts that, no matter the problem, Ahmed will find an effective approach to tackling it. Ahmed has been working as a senior employee for a couple of years now, and during that time he has built a great skill set. He has faced many known and unknown issues, all of which he was able to solve. His team trusts him and is confident that as long as Ahmed is part of the discussion, they are in good hands.

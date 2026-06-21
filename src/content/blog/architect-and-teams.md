@@ -2,7 +2,7 @@
 title: "Architect and Teams"
 date: 2026-04-17
 description: "Communication creates clarity across different perspectives — and for engineers, that means learning to talk non-tech. Anyone building a system to deliver..."
-cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/a1cc22f5-907e-48f0-9007-7f8117569d22.jpg"
+cover: "/images/blog/a1cc22f5-907e-48f0-9007-7f8117569d22.jpg"
 ---
 
 Communication creates clarity across different perspectives — and for engineers, that means learning to talk non-tech. Anyone building a system to deliver business value must master this. Consider the difference: "We need to build a scalable system using X architecture style" versus "We need a system that can serve a lot of users." Same intent, completely different audiences. The architect's job is to move fluently between both.

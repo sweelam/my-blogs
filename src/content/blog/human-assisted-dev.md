@@ -2,7 +2,7 @@
 title: "Assisted-Human Development"
 date: 2026-06-21
 description: "When AI relies on Human!"
-cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/assited-human.png"
+cover: "/images/blog/assited-human.png"
 ---
 
 

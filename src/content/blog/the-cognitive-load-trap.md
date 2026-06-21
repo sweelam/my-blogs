@@ -2,7 +2,7 @@
 title: "The Cognitive Load Trap"
 date: 2026-04-23
 description: "In software industry, they issues that may break systems are not only technical issues, sometimes the primary issue is organizational. System sustainability..."
-cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/e70b7370-bc5c-4548-8ceb-cd9374a2fbd0.png"
+cover: "/images/blog/e70b7370-bc5c-4548-8ceb-cd9374a2fbd0.png"
 ---
 
 In software industry, they issues that may break systems are not only technical issues, sometimes the primary issue is organizational. System sustainability refers to how well a software system can continue operating, evolving, and delivering value over time without degrading in performance, quality, cost, or maintainability.

@@ -8,6 +8,9 @@ interface Props {
 
 const { title, description, ogImage, lang = 'en' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = ogImage
+  ? (ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site).href)
+  : undefined;
 const siteTitle = 'Mohammed Sweelam';
 ---
 
@@ -21,10 +24,11 @@ const siteTitle = 'Mohammed Sweelam';
     {description && <meta name="description" content={description} />}
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImageURL && <meta property="og:image" content={ogImageURL} />}
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Prevent flash of wrong theme -->
     <script is:inline>

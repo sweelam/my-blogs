@@ -2,7 +2,7 @@
 title: "تنظيم الوقت بجدول الفروض الخمس"
 date: 2026-04-19
 description: "إدارة الوقت من أهم أسس النجاح، وللإدارة الناجحة مقدمات، أهمها الاستعانة بالله عز وجل. ولما كان الإسلام مصدرًا لعوامل نجاح متعددة، كان النظر إلى ضوابط الدين في..."
-cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/243b52e5-da73-4b13-b156-4e9103edacf6.png"
+cover: "/images/blog/243b52e5-da73-4b13-b156-4e9103edacf6.png"
 lang: ar
 ---
 

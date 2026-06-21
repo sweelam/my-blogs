@@ -2,7 +2,7 @@
 title: "The Million-Dollar AI Mistake"
 date: 2026-04-25
 description: "While designing a complex installment module with multiple variables, an engineer had a 'bright' idea: 'Instead of building this ourselves, let's just use AI...."
-cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/ce285527-3313-47ac-b6e6-e58ada16a125.png"
+cover: "/images/blog/ce285527-3313-47ac-b6e6-e58ada16a125.png"
 ---
 
 While designing a complex installment module with multiple variables, an engineer had a "bright" idea: "Instead of building this ourselves, let's just use AI. It can adjust the results on the fly." It was a million-dollar mistake.

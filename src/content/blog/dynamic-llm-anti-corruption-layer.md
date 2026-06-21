@@ -2,7 +2,7 @@
 title: "Managing What You Can't Control"
 date: 2026-04-18
 description: "In this blog, I'm assuming you have foundational knowledge about AI and"
-cover: "https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/dc0f13b5-041d-47a6-9e50-6db91c6a7c53.png"
+cover: "/images/blog/dc0f13b5-041d-47a6-9e50-6db91c6a7c53.png"
 ---
 
 *In this blog, I'm assuming you have foundational knowledge about AI and LLM*
