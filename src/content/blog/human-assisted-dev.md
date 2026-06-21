@@ -16,7 +16,7 @@ Because AI relies heavily on clear requirements, development in greenfield syste
 
 ## Common Pitfalls
 
-I have observed several common pitfalls when using AI to write code. When software engineers fully delegate control to an AI agent, it often results in source code plagued by issues—ranging from over-complication and duplication to, most critically, violations of established architectural rules. For a simple example, consider a standard layered architecture. This approach requires strict adherence to layer boundaries; an API or Business layer should never call the Persistence layer directly, and vice versa. While some advanced AI models are intelligent enough to identify and respect these constraints, relying on the models implicitly without clear guidance is a risk.
+I have observed several common pitfalls when using AI to write code. When software engineers fully delegate control to an AI agent, it often results in source code plagued by issues—ranging from over-complication and duplication to, most critically, violations of established architectural rules. For a simple example, consider a standard layered architecture. This approach requires strict adherence to layer boundaries; an API should never call the Persistence layer directly, and vice versa. While some advanced AI models are intelligent enough to identify and respect these constraints, relying on the models implicitly without clear guidance is a risk.
 
 ![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/open-closed-l.png)
 
