@@ -28,7 +28,7 @@ To avoid these pitfalls, it is crucial to establish practices that govern the co
 
 - **Code Review**: This approach is also beneficial because feedback is naturally surfaced when the team reviews Merge or Pull Requests. However, *both of these methods are prone to human error and lack a systematic structure*.
 
-The systematic approach is to use AI itself to verify its work
+### The systematic approach is to use AI itself to verify its work
 
 - **AI Rules**: If you are using spec-driven development, you can define rule files that the AI agent must always follow. For example, you might define a simple constraint like the following:
 
@@ -36,7 +36,7 @@ The systematic approach is to use AI itself to verify its work
 Do not add extra code unless it is strictly necessary, and always adhere to the YAGNI principle.
 ```
 
-- **AI Skills**: The rule define one thing for AI to follow, Skill is a guideline of some steps "perhaps rules" which make it a workflow that you can instruct AI to follow.
+- **AI Skills**: A rule defines a single constraint for the AI to follow. A skill is a set of steps—often composed of several rules—that together form a workflow you can instruct the AI to execute.
 
 ```
 - Do not add extra code unless it is strictly necessary, and always adhere to the YAGNI principle.
@@ -45,14 +45,27 @@ Do not add extra code unless it is strictly necessary, and always adhere to the 
 - ... 
 ```
 
-By Defining this, the AI agent will validate its work before and after writing. It executes a verification process to ensure any new code strictly follows your established guidelines.
+By Defining these, the AI agent will validate its work before and after writing. It executes a verification process to ensure any new code strictly follows your established guidelines.
 
-### Example: Greenfield Project 
+## Example: Greenfield Project 
 
-Wessam is a T-shaped engineer with in-depth expertise in JVM technologies. For one of the new systems he worked on, the team decided to develop in Golang due to a few factors—performance being the major one. Wessam set up the project structure and decided to utilize AI-Assisted Development via "Spec-Driven Development." The first task he assigned the AI agent was to write a simple API.
+Wessam is a T-shaped engineer with in-depth expertise in JVM technologies. For one of the new systems he worked on, the team decided to develop in Golang due to a few factors—performance being the major one. Wessam set up the project structure and decided to use AI-Assisted Development via *Spec-Driven Development*. The first task he assigned the AI agent was to write a simple API.
 
 Because Wessam comes from a JVM background, he asked the AI to implement common patterns found in Java frameworks, such as Dependency Injection. This is an excellent way to manage dependencies across different layers or modules. In Java's Spring Boot, this relies on a reflection-based mechanism, which looks like this:
 
 ![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/java-di.png)
 
-So, Wessam also requested from AI to use reflection mechanism to apply the same, and AI explored the available Lib and used the one that supports reflection!
+Consequently, Wessam asked the AI to use a reflection mechanism to achieve the same result in Go. The AI explored available libraries and implemented one that supported reflection. Over time, however, the team began to observe performance degradation. After investigating, they discovered that most of the execution time was being consumed by the reflection library they had chosen.
+
+They decided to research best practices and the idiomatic way to handle this in Go. They discovered that Go's philosophy generally discourages the use of reflection, especially in high-performance systems; instead, dependencies should be handled natively. To prevent this from happening again, Wessam's teammate, Alex, recommended adding a new rule to their AI instructions:
+
+```
+- Evaluate the technical requirements and recommend better approaches if the requests violate idiomatic language patterns or common best practices.
+```
+
+## Conclusion 
+What started as "AI-Assisted Development" quietly flips into something else once you look closely at how teams actually ship code with AI agents: Assisted-Human Development. The AI writes the code, but it's still leaning on something human-authored to know what "good" looks like—a rule, a skill, an architectural boundary someone had to define first. Wessam's team didn't get faster Go code because the AI got smarter overnight; they got it because a human noticed the failure, understood why it happened, and translated that understanding into a constraint the AI could follow going forward. The AI executed. The human supplied the judgment.
+
+This is the part of the workflow that's easy to skip and expensive to skip. Pair review and code review catch problems after the fact, and they scale with team culture more than with rigor. Rules and skills catch them before the fact, but only if someone took the time to write them—and rewrite them, every time the AI gets something subtly wrong for a reason worth remembering.
+
+So the honest framing isn't that AI is doing the development and humans are reviewing it. It's closer to the reverse: humans are doing the development—deciding what correct looks like, what idiomatic means in this language, where the boundaries are—and the AI is assisting by writing it down at a speed no team could match alone. Get that balance backwards, and you end up with fast code that nobody, including the AI, actually understands the constraints of.
