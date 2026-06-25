@@ -30,12 +30,10 @@ Adapters are logically the doors to the outside world. A system needs to store d
 The following C-Sharp controller is doing many things that most of the engineers don't need to do manually, this class should represent adapter component.
 ![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/c-sharp-controller.png)
 
-
 ### Ports
 This component defines the interface that the core domain understands. This interface works similarly regardless of whether the port is inbound or outbound. The interface defines the expected message that the core domain can use — this message is the "domain object." It's different from the adapter's received message, the "raw message," which comes from the external system. The domain object always reflects domain fields; a good domain object should have proper field names. The raw object transformation is typically the adapter's responsibility — however, you can define a mapper utility for simplicity.
 
 ![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/adapter-to-core.png)
-
 
 ### Dependency Direction 
 A common mistake engineers make when using this design recently is reversing the dependency, which makes components tightly coupled. It's important to remember the dependency direction while building hexagonal architecture — the rule is that adapters and ports should always point toward the core domain. Logically, this is the objective; however, technically, this may change based on the technology you're using. Let's take an example: suppose you have an API that receives data and stores it in a database — it looks something like this, visually:
