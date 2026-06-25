@@ -10,7 +10,7 @@ Every developer writes code, lots of code. Good developers design ahead — they
 ## Short History  
 Hexagonal architecture, aka "ports and adapters architecture," is a software design. It was designed by Alistair Cockburn as an attempt to avoid common problems discovered in other designs. In 2005, he announced this design for building object-oriented systems; yet, hexagonal architecture is generic enough to handle non-object-oriented systems too. Alistair wanted to design something that would reduce coupling between its components. Despite the fact that this is a software design mainly translated into the code layer, you'll observe that the intuition behind its core building blocks came purely from supportive components and infrastructure used in systems like databases and external remote system calls.
 
-The idea behind this architecture is something most engineers already know: separation of concerns. This architecture generalizes it in a way that looks at the system from a layer and component perspectives — every system is built to do something, "the core domain," and everything else is support. Such support can be inbound, "from outside in," or outbound, "from inside out" — and this is why it's also called ports and adapters architecture.
+The idea behind this architecture is something most engineers already know: separation of concerns. This architecture generalizes it in a way that looks at the system from both layer and component perspective — every system is built to do something, "the core domain," and everything else is support. Such support can be inbound, "from outside in," or outbound, "from inside out" — and this is why it's also called ports and adapters architecture.
 
 ## The Core Pillars 
 
@@ -21,7 +21,7 @@ The good thing about understanding architecture and software design is the relat
 ### The core domain 
 This is the central component that includes the core functionalities, typically the business requirements. This architecture recommends keeping this layer native by nature; it's the component that should work and solve the problem without being tightly coupled to any other layer. It should be designed this way to be flexible and testable. If you're using Go, it should be native Go without any external libraries or frameworks — the same goes if you're using Java, Python, or any other language.
 
-This idea is really well defined: if you build this part natively, it becomes extremely easy to change anything around it, they become interchangeable components, while your core domain keeps working. Think about it.
+This idea is really well defined: if you build this part natively, it becomes extremely easy to swap the components around it — they become interchangeable — while your core domain keeps working.
 
 ### Adapters 
 Adapters are logically the doors to the outside world. A system needs to store data in a data store (database, messaging broker, cache system), and it needs to fetch data from external systems via RPC. Since these doors do many things like managing network and I/O, you'll ultimately find them in the form of libraries or frameworks. For instance, exposing an API requires handling layer 7 over the HTTP server you're using — you don't need to do all of this yourself; it's better to use ready-made technology, something like controllers in Spring Boot, or handlers in Go Gin.
@@ -42,7 +42,18 @@ A common mistake engineers make when using this design recently is reversing the
 
 ![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/hexa-database-access.png)
 
-To build this correctly, you should strictly use dependency inversion. You should rely on abstraction not implementation, the following class diagram explains the design 
+To build this correctly, you should strictly use dependency inversion. You should rely on abstraction not implementation, the following class diagram explains the design, You can see the core component in the middle and the direction is pointing to it using inversion of control.
 
 ![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/hexa-class-diagram.png)
 
+### Benefits of Hexagonal Architecture
+
+- **Testability** — the core domain has no dependency on databases, HTTP frameworks, or message brokers, so you can test business logic with plain unit tests and in-memory fakes, no test containers or mocked servers required.
+- **Technology independence** — swapping a database, message broker, or web framework means writing a new adapter, not touching the core domain. The business logic doesn't know or care what's outside the port.
+- **Maintainability** — changes triggered by infrastructure (a new API version, a different cache, a vendor migration) stay isolated to adapters, reducing the blast radius of change across the codebase.
+- **Clear boundaries** — ports make the contract between the core domain and the outside world explicit, so engineers always know exactly what the domain expects and exposes, rather than discovering it by tracing through framework code.
+- **Longevity** — because the core domain isn't tied to any specific framework or library version, it's far less exposed to deprecations, breaking upgrades, or vendor lock-in over the system's lifetime.
+- **Easier onboarding** — new engineers can understand the business rules by reading the core domain alone, without needing to first untangle infrastructure code.
+
+### Conclusion 
+Hexagonal architecture isn't about hexagons or strict folder layouts — it's a discipline: keep your core domain free of infrastructure concerns, and let ports and adapters absorb the volatility of the outside world. Get that boundary right, and swapping a database or an HTTP framework becomes a non-event instead of a rewrite.
