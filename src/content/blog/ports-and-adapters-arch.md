@@ -40,7 +40,7 @@ This component defines the interface that the core domain understands. This inte
 ### Dependency Direction 
 A common mistake engineers make when using this design recently is reversing the dependency, which makes components tightly coupled. It's important to remember the dependency direction while building hexagonal architecture — the rule is that adapters and ports should always point toward the core domain. Logically, this is the objective; however, technically, this may change based on the technology you're using. Let's take an example: suppose you have an API that receives data and stores it in a database — it looks something like this, visually:
 
-![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/hexa-database-access.png)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/hexa-database-access-1.png)
 
 To build this correctly, you should strictly use dependency inversion. You should rely on abstraction not implementation, the following class diagram explains the design, You can see the core component in the middle and the direction is pointing to it using inversion of control.
 
