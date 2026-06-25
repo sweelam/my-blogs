@@ -26,8 +26,14 @@ This idea is really well defined: if you build this part natively, it becomes ex
 ### Adapters 
 Adapters are logically the doors to the outside world. A system needs to store data in a data store (database, messaging broker, cache system), and it needs to fetch data from external systems via RPC. Since these doors do many things like managing network and I/O, you'll ultimately find them in the form of libraries or frameworks. For instance, exposing an API requires handling layer 7 over the HTTP server you're using — you don't need to do all of this yourself; it's better to use ready-made technology, something like controllers in Spring Boot, or handlers in Go Gin.
 
+
+The following C-Sharp controller is doing many things that most of the engineers don't need to do manually, this class should represent adapter component.
 ![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/c-sharp-controller.png)
 
 
-### Ports 
+### Ports
+This component defines the interface that the core domain understands. This interface works similarly regardless of whether the port is inbound or outbound. The interface defines the expected message that the core domain can use — this message is the "domain object." It's different from the adapter's received message, the "raw message," which comes from the external system. The domain object always reflects domain fields; a good domain object should have proper field names. The raw object transformation is typically the adapter's responsibility — however, you can define a mapper utility for simplicity.
+
+![](https://raw.githubusercontent.com/sweelam/my-blogs/main/images/blog/adapter-to-core)
+
 
