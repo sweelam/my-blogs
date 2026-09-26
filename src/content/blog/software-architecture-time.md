@@ -5,7 +5,7 @@ description: "When Every Software Engineer Needs to Learn Software Architecture"
 cover: "/images/blog/software-arch-time.jpeg"
 ---
 
-## The important of User Experience
+## The importance of User Experience
 User experience (UX) is one of the key factors that impact any software business. It plays a major role in increasing conversion rates and driving revenue. In a 2006 Stanford presentation, Amazon engineer Greg Linden revealed that just 100 milliseconds of latency cost the company 1% of sales. Meanwhile, fintech apps retain only 48% of users annually (Alchemer, 2022 Mobile Customer Engagement Report). System failures don't just frustrate users—they directly erode your bottom line. If the UX is poor, users will leave the application and never come back.
 
 It turns out that everything I just described depends entirely on system performance—or, more generically, on *System Reliability*, a core quality attribute every engineer should care about. Unfortunately, this attribute is rarely the focus of engineers; it's usually left to architects. This is what you, the "Software Engineer (Non-Architect)," need to understand: things aren't like they used to be. The new star, AI, is changing everything around you.
