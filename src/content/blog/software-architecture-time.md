@@ -18,7 +18,7 @@ _The discussion around Quality Attributes requires lots of papers, I'd like to s
 
 ## Why do we care about failures?
 
-![](https://raw.githubusercontent.com/sweelam/my-blogs/refs/heads/main/images/blog/software-arch-time.jpeg)
+![](https://raw.githubusercontent.com/sweelam/my-blogs/refs/heads/main/public/images/blog/resiliency-matter.jpeg)
 
 In the beginning, when only a few users use your system, you probably will not face any issue. Failures
 appear when the system scales up. Typically, companies aim to attract a lot of users to their system, and with
