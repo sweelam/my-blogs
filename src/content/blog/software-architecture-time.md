@@ -41,7 +41,7 @@ Reasons for system failures vary. They can be due to code bugs, hardware failure
 
 Vibe coding with AI is indeed fast—it's amazing at writing code quickly. But writing code is just one step in the Software Development Life Cycle (SDLC). The real value only comes when you achieve *customer satisfaction*: users happy with the time it takes to get a service from your system, not angry because a failure page popped up in their face when your backend hit an issue. Designing for that outcome is exactly what an Architect does. Now, it's you.
 
-You can use AI however you like, but if you want to deliver production-ready software, you need to be the one driving. Take the time to design the system carefully before you ask anything of AI—that's how you end up with a future-proof, maintainable system that's easy to change later. The second habit worth building is reviewing before delivering: we're human, and we lose attention on things we didn't build carefully ourselves. That's exactly what happens when AI is given full control instead of you.
+You can use AI however you like, but if you want to deliver production-ready software, you need to be the one driving. Take the time to design the system carefully before you ask anything of AI—that's how you end up with a future-proof, maintainable system that's easy to change later. How can you do that if you don't know software architecture principles and patterns? The second habit worth building is reviewing before delivering: we're human, and we lose attention on things we didn't build carefully ourselves. That's exactly what happens when AI is given full control instead of you.
 
 ## Conclusion
 
