@@ -15,7 +15,7 @@ Coding skills are becoming less important than before. Vibe coding—code genera
 
 The one space that remains a true source of trust is *Architecture*. An LLM can do exactly what you tell it to do—it can build a project in a few hours—but experience shows it can't guarantee a reliable or maintainable system. Deciding that direction is still your job. You can ask AI to handle it for you, but without your supervision, it won't deliver what users will love. Architecture qualities like scalability, security, portability, evolvability, and the rest of the "ility" family require your guidance. If you rely on AI alone to get these right, the result won't be what you expect.
 
-_The discussion around Quality Attributes requires lots of papers, I'd like to share with you here a quick example for a skills that AI may not be the right source of dealing with it—Taken from our book: [book](https://leanpub.com/thehighwaypathtoscalablesystems) The Highway Path to Scalable Systems_
+_The discussion around Quality Attributes requires lots of papers, I'd like to share with you here a quick example for a skills that AI may not be the right source of dealing with it—Taken from our [book:](https://leanpub.com/thehighwaypathtoscalablesystems) The Highway Path to Scalable Systems_
 
 ## Why do we care about failures?
 
