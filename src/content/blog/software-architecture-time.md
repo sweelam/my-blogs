@@ -2,7 +2,7 @@
 title: "Time to Think like a Software Architect"
 date: 2026-09-28
 description: "When Every Software Engineer Needs to Learn Software Architecture"
-cover: "/images/blog/software-arch-time.jpg"
+cover: "/images/blog/software-arch-time.jpeg"
 ---
 
 ## The important of User Experience
