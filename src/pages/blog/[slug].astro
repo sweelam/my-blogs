@@ -1,26 +1,40 @@
 ---
-import { getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import { getSortedPosts, readingTime } from '../../lib/posts';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map(post => ({
+  const posts = await getSortedPosts();
+  return posts.map((post, i) => ({
     params: { slug: post.slug },
-    props: { post },
+    props: { post, newer: posts[i - 1], older: posts[i + 1] },
   }));
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const { post, newer, older } = Astro.props;
+const { Content, headings } = await post.render();
+
+// Many descriptions are auto-excerpts of the opening paragraph; only show real standalone summaries as a lede.
+const squash = (s: string) => s.replace(/[*_`#>"“”]/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+const description = post.data.description;
+const showLede = !!description
+  && !/(\.\.\.|…)\s*$/.test(description)
+  && !squash(post.body).startsWith(squash(description));
+const toLink = (p?: typeof post) => (p ? { href: `/blog/${p.slug}`, title: p.data.title, lang: p.data.lang } : undefined);
 ---
 
 <BlogPost
+  slug={post.slug}
   title={post.data.title}
   date={post.data.date}
   description={post.data.description}
   cover={post.data.cover}
   tags={post.data.tags}
   lang={post.data.lang}
+  headings={headings}
+  showLede={showLede}
+  minutes={readingTime(post.body)}
+  newer={toLink(newer)}
+  older={toLink(older)}
 >
   <Content />
 </BlogPost>

@@ -1,0 +1,35 @@
+---
+interface Props {
+  slug: string;
+  lang?: 'en' | 'ar';
+}
+
+const { slug, lang = 'en' } = Astro.props;
+const label = lang === 'ar' ? 'عدد القرّاء' : 'Readers';
+---
+
+<!-- Revealed by the script once the views API answers (it isn't available under `astro dev`). -->
+<span class="post-views" data-slug={slug} data-lang={lang} hidden>
+  <span class="dot" aria-hidden="true"></span>
+  <span class="post-views-count" title={label} aria-label={label}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+    </svg>
+    <span data-views></span>
+  </span>
+</span>
+
+<script>
+  const el = document.querySelector<HTMLElement>('.post-views')!;
+  const locale = el.dataset.lang === 'ar' ? 'ar-EG' : 'en-US';
+
+  fetch(`/api/views/${encodeURIComponent(el.dataset.slug!)}`, { method: 'POST' })
+    .then((res) => (res.ok ? res.json() : Promise.reject()))
+    .then(({ views }: { views: number }) => {
+      el.querySelector('[data-views]')!.textContent = new Intl.NumberFormat(locale).format(views);
+      el.hidden = false;
+    })
+    .catch(() => {
+      // API unavailable (e.g. `astro dev`): keep the count hidden.
+    });
+</script>

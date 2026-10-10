@@ -73,7 +73,30 @@ make release
    ```bash
    npx wrangler pages project create my-blogs
    ```
-3. After that, `make release` handles everything.
+3. Create the reactions/readers database and apply its schema (only needed once):
+   ```bash
+   make db-create      # then paste the printed database_id into wrangler.toml
+   make db-migrate
+   ```
+4. After that, `make release` handles everything. Run `make db-migrate` again whenever a new file lands in `migrations/`.
+
+## Reader Interactions (likes, readers, share)
+
+Each post shows a unique-reader count next to its date and, at the end, 👍/👎 buttons plus share links (LinkedIn, X, copy link).
+
+- **API** — Cloudflare Pages Functions in `functions/api/`:
+  - `GET|PUT /api/reactions/:slug` — like/dislike counts; `PUT { "reaction": "like" | "dislike" | null }`
+  - `POST /api/views/:slug` — records the reader once and returns `{ views }`
+- **Storage** — Cloudflare D1 (`DB` binding in `wrangler.toml`), schema in `migrations/`.
+- **Identity** — anonymous: a random id in an HttpOnly `vid` cookie, so one reaction and one view per browser per post.
+- `make dev` (Astro only) has no API, so the counts and buttons stay hidden there. To test them locally:
+  ```bash
+  make dev-full   # build + local D1 + Functions at http://localhost:8788
+  ```
+- To see production numbers per post:
+  ```bash
+  make db-stats
+  ```
 
 ## Writing a New Blog Post
 

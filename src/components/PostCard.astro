@@ -1,0 +1,53 @@
+---
+import Icon from './Icon.astro';
+import Monogram from './Monogram.astro';
+import { formatDate, readingLabel, readingTime, type Post } from '../lib/posts';
+
+interface Props {
+  post: Post;
+  /** `featured` = large hero card, `grid` = standard card, `row` = compact list entry. */
+  variant?: 'featured' | 'grid' | 'row';
+  headingLevel?: 'h2' | 'h3';
+  eager?: boolean;
+}
+
+const { post, variant = 'grid', headingLevel: Heading = 'h3', eager = false } = Astro.props;
+const { title, description, cover, date, lang } = post.data;
+const href = `/blog/${post.slug}`;
+const minutes = readingTime(post.body);
+---
+
+<article
+  class:list={['card', `card--${variant}`]}
+  lang={lang}
+  dir={lang === 'ar' ? 'rtl' : 'ltr'}
+>
+  <div class="card-cover" style={`view-transition-name: cover-${post.slug}`}>
+    {cover ? (
+      <>
+        <img class="card-cover-blur" src={cover} alt="" aria-hidden="true" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+        <img class="card-cover-img" src={cover} alt="" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+      </>
+    ) : (
+      <div class="card-cover-placeholder"><Monogram /></div>
+    )}
+  </div>
+
+  <div class="card-body">
+    <div class="card-meta">
+      <time datetime={date.toISOString()}>{formatDate(date, lang)}</time>
+      <span class="dot" aria-hidden="true"></span>
+      <span>{readingLabel(minutes, lang)}</span>
+    </div>
+    <Heading class="card-title">
+      <a href={href} class="card-link">{title}</a>
+    </Heading>
+    {description && <p class="card-desc">{description}</p>}
+    {variant === 'featured' && (
+      <span class="card-cta" aria-hidden="true">
+        {lang === 'ar' ? 'اقرأ المقال' : 'Read article'}
+        <Icon name={lang === 'ar' ? 'arrow-left' : 'arrow-right'} size={16} />
+      </span>
+    )}
+  </div>
+</article>

@@ -1,0 +1,9 @@
+name = "my-blogs"
+pages_build_output_dir = "./dist"
+compatibility_date = "2025-06-01"
+
+# Reactions + readers storage (created with `make db-create`).
+[[d1_databases]]
+binding = "DB"
+database_name = "my-blogs-reactions"
+database_id = "afe194aa-74c0-46f8-9a71-410d557233d8"

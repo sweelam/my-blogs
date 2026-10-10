@@ -1,52 +1,43 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import Icon from '../../components/Icon.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getSortedPosts, type Post } from '../../lib/posts';
 
-const posts = (await getCollection('blog'))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = await getSortedPosts();
 
-function formatDate(date: Date) {
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const byYear = new Map<number, Post[]>();
+for (const post of posts) {
+  const year = post.data.date.getFullYear();
+  byYear.set(year, [...(byYear.get(year) ?? []), post]);
 }
 ---
 
-<BaseLayout title="Blog" description="All posts by Mohammed Sweelam">
+<BaseLayout title="Articles" description="All articles by Mohammed Sweelam on software architecture, distributed systems, and engineering.">
   <div class="container">
-    <div class="page-header">
-      <h1 class="page-title">Blog</h1>
-      <p class="page-subtitle">{posts.length} posts on engineering, architecture & more</p>
-    </div>
+    <header class="page-header">
+      <p class="section-kicker">The journal</p>
+      <h1 class="page-title">All articles</h1>
+      <p class="page-subtitle">
+        {posts.length} essays on software architecture, engineering practice, and the people behind the code.
+      </p>
+      <button type="button" class="search-inline" data-search-open>
+        <Icon name="search" size={18} />
+        <span>Search by title or topic…</span>
+        <kbd><span data-mod-key>⌘</span>K</kbd>
+      </button>
+    </header>
 
-    <div class="posts-grid">
-      {posts.map(post => (
-        <a href={`/blog/${post.slug}`} class="post-card">
-          {post.data.cover ? (
-            <div class="post-card-cover">
-              <img src={post.data.cover} alt="" loading="lazy" />
-            </div>
-          ) : (
-            <div class="post-card-cover-placeholder">📝</div>
-          )}
-          <div class="post-card-body">
-            <div class="post-meta">
-              <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
-            </div>
-            <h2 class="post-card-title">{post.data.title}</h2>
-            {post.data.description && (
-              <p class="post-card-desc">{post.data.description}</p>
-            )}
-            {post.data.tags && post.data.tags.length > 0 && (
-              <div class="tags">
-                {post.data.tags.map(t => <span class="tag">{t}</span>)}
-              </div>
-            )}
-          </div>
-        </a>
-      ))}
-    </div>
+    {[...byYear].map(([year, yearPosts]) => (
+      <section class="year-group" aria-labelledby={`year-${year}`}>
+        <h2 class="year-label" id={`year-${year}`}>
+          {year}
+          <span class="year-count">{yearPosts.length} {yearPosts.length === 1 ? 'article' : 'articles'}</span>
+        </h2>
+        <div class="post-list">
+          {yearPosts.map((post) => <PostCard post={post} variant="row" />)}
+        </div>
+      </section>
+    ))}
   </div>
 </BaseLayout>
-
-<style>
-  .container { padding-bottom: 4rem; }
-</style>

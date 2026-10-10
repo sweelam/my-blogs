@@ -1,0 +1,60 @@
+---
+import type { MarkdownHeading } from 'astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+  label: string;
+}
+
+const { headings, label } = Astro.props;
+const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
+// Indent h3s only when the post also uses h2s (some posts use h3 as their top level).
+const nested = items.some((h) => h.depth === 2);
+---
+
+{items.length >= 2 && (
+  <nav class="toc" aria-label={label}>
+    <p class="toc-label"><Icon name="list" size={14} />{label}</p>
+    <ol class="toc-list">
+      {items.map((h) => (
+        <li class:list={['toc-item', { 'toc-item--sub': nested && h.depth === 3 }]}>
+          <a href={`#${h.slug}`} data-toc-link={h.slug}>{h.text}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}
+
+<script>
+  const links = new Map<string, HTMLAnchorElement>();
+  document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]').forEach((a) => links.set(a.dataset.tocLink!, a));
+
+  if (links.size) {
+    const headings = [...links.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    let current = '';
+
+    const update = () => {
+      // The active section is the last heading that has scrolled past the top ~quarter of the viewport.
+      const line = window.innerHeight * 0.25;
+      let next = headings[0]?.id ?? '';
+      for (const h of headings) {
+        if (h.getBoundingClientRect().top <= line) next = h.id;
+        else break;
+      }
+      if (next === current) return;
+      current = next;
+      links.forEach((a, id) => a.classList.toggle('is-active', id === current));
+    };
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { update(); ticking = false; });
+    }, { passive: true });
+    update();
+  }
+</script>
