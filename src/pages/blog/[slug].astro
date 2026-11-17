@@ -30,6 +30,7 @@ const toLink = (p?: typeof post) => (p ? { href: `/blog/${p.slug}`, title: p.dat
   cover={post.data.cover}
   tags={post.data.tags}
   lang={post.data.lang}
+  author={post.data.author}
   headings={headings}
   showLede={showLede}
   minutes={readingTime(post.body)}

@@ -10,7 +10,16 @@ import { SITE, formatDate, readingLabel } from '../lib/posts';
 
 interface PostLink { href: string; title: string; lang: 'en' | 'ar' }
 
+interface Author {
+  name: string;
+  role?: string;
+  bio?: string;
+  avatar?: string;
+  links?: { website?: string; linkedin?: string; github?: string; youtube?: string };
+}
+
 interface Props {
+  author?: Author;
   slug: string;
   title: string;
   date: Date;
@@ -27,7 +36,7 @@ interface Props {
 
 const {
   slug, title, date, description, showLede = false, cover, tags, lang = 'en',
-  headings = [], minutes, newer, older,
+  headings = [], minutes, newer, older, author: guest,
 } = Astro.props;
 
 const t = {
@@ -50,9 +59,22 @@ const t = {
     top: 'العودة للأعلى',
   },
 }[lang];
+
+const author: Author = guest ?? {
+  name: SITE.author,
+  bio: t.bio,
+  links: SITE.links,
+};
+const authorHref = author.links?.website ?? author.links?.linkedin;
+const authorLinks = [
+  { key: 'website', icon: 'globe', label: 'Personal website', size: 17 },
+  { key: 'linkedin', icon: 'linkedin', label: 'LinkedIn', size: 16 },
+  { key: 'github', icon: 'github', label: 'GitHub', size: 16 },
+  { key: 'youtube', icon: 'youtube', label: 'YouTube', size: 17 },
+] as const;
 ---
 
-<BaseLayout title={title} description={description} ogImage={cover} lang={lang} type="article">
+<BaseLayout title={title} description={description} ogImage={cover} lang={lang} type="article" author={author.name}>
   <div class="reading-progress" aria-hidden="true"><span></span></div>
 
   <article class="article">
@@ -79,10 +101,14 @@ const t = {
         )}
 
         <div class="byline">
-          <span class="byline-mark"><Monogram /></span>
+          {author.avatar
+            ? <img src={author.avatar} alt="" class="byline-mark byline-avatar" width="40" height="40" />
+            : <span class="byline-mark"><Monogram /></span>}
           <span class="byline-text">
             <span class="byline-label">{t.writtenBy}</span>
-            <a href={SITE.links.website} target="_blank" rel="noopener noreferrer" class="byline-name">{SITE.author}</a>
+            {authorHref
+              ? <a href={authorHref} target="_blank" rel="noopener noreferrer" class="byline-name">{author.name}</a>
+              : <span class="byline-name">{author.name}</span>}
           </span>
         </div>
       </div>
@@ -103,15 +129,18 @@ const t = {
         <PostActions slug={slug} title={title} lang={lang} />
 
         <aside class="author-card" aria-label={t.writtenBy}>
-          <span class="author-mark"><Monogram /></span>
+          {author.avatar
+            ? <img src={author.avatar} alt={author.name} class="author-mark author-avatar" width="56" height="56" loading="lazy" />
+            : <span class="author-mark"><Monogram /></span>}
           <div class="author-info">
             <p class="author-label">{t.writtenBy}</p>
-            <p class="author-name">{SITE.author}</p>
-            <p class="author-bio">{t.bio}</p>
+            <p class="author-name">{author.name}</p>
+            {author.role && <p class="author-role">{author.role}</p>}
+            {author.bio && <p class="author-bio">{author.bio}</p>}
             <div class="author-links">
-              <a href={SITE.links.website} target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Personal website"><Icon name="globe" size={17} /></a>
-              <a href={SITE.links.linkedin} target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn"><Icon name="linkedin" size={16} /></a>
-              <a href={SITE.links.github} target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub"><Icon name="github" size={16} /></a>
+              {authorLinks.map(({ key, icon, label, size }) => author.links?.[key] && (
+                <a href={author.links[key]} target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label={label}><Icon name={icon} size={size} /></a>
+              ))}
             </div>
           </div>
         </aside>
